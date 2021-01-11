@@ -1,3 +1,3 @@
 ��# hacker
 
-### https://github.com/asn338053/io.hackers.git
+### https://asn338053.github.io/hackers/
