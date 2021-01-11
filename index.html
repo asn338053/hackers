@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行事曆</title>
+    <link   
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+        crossorigin="anonymous"
+    >
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css'/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;500&display=swap"
+        rel="stylesheet"
+    >
+
+    
+</head>
+<body>
+    <div class="table-responsive">
+        <div class="container">
+            <h1 class="month text-center my-3"></h1>
+            <div class="d-flex justify-content-end">
+                <button
+                    type="button"
+                    class="btn btn-primary my-2"
+                    data-toggle="modal" data-target="#exampleModal"
+                >新增事項</button>
+            </div>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Sun</th>
+                        <th scope="col">Mon</th>
+                        <th scope="col">Tue</th>
+                        <th scope="col">Wen</th>
+                        <th scope="col">Thu</th>
+                        <th scope="col">Fri</th>
+                        <th scope="col">Sat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="pre">
+                <i class="fas fa-arrow-left fa-2x"></i>
+            </div>
+            <div class="next">
+                <i class="fas fa-arrow-right fa-2x"></i>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        data-backdrop="static"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h5
+                        class="modal-title text-white insertTodo"
+                        id="exampleModalLabel"
+                    >新增待辦事項</h5>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input
+                                type="date"
+                                id="date"
+                                class="datePick form-control"
+                                name="date"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="time"
+                                id="time"
+                                class="timePick form-control"
+                                name="usr_time"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input
+                                    type="text"
+                                    class="form-control inputText"
+                                    placeholder="請輸入待辦事項"
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input
+                                    type="text"
+                                    class="form-control address"
+                                    placeholder="請點選地點"
+                                    disabled
+                                >
+                            </div>
+                            <div id="map" style="height:300px"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="favcolor">待辦事項顏色標註:</label>
+                                <input type="color" 
+                                    id="favcolor"
+                                    class="ml-3 favcolor" 
+                                    name="favcolor" 
+                                    width="50px"
+                                value="#ff0000">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                    >關閉</button>
+                    <button
+                        type="button"
+                        class="btn btn-primary addData"
+                    >新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal2 -->
+    <div
+        class="modal fade"
+        id="secondModal"
+        data-backdrop="static"
+        tabindex="-1"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5
+                        class="modal-title text-white insertTodo"
+                        id="exampleModalLabel"
+                    >待辦事項</h5>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input
+                                type="date"
+                                id="date"
+                                class="newDatePick form-control"
+                                name="date"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input
+                                type="time"
+                                id="time"
+                                class="newTimePick form-control"
+                                name="usr_time"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input
+                                    type="text"
+                                    class="form-control newInputText"
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input
+                                    type="text"
+                                    class="form-control newAddress"
+                                    disabled
+                                >
+                            </div>
+                            <div
+                                id="map2"
+                                style="height:300px"
+                            ></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="favcolor">待辦事項顏色標註:</label>
+                                <input type="color" 
+                                    id="favcolor"
+                                    class="ml-3 newFavcolor" 
+                                    name="favcolor" 
+                                    width="50px"
+                                value="#ff0000">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                    >關閉</button>
+                    <button
+                        type="button"
+                        class="btn btn-primary reviseData"
+                    >修改</button>
+                    <button
+                        type="button"
+                        class="btn btn-danger deleteData"
+                    >刪除</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+<script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+    integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+    crossorigin="anonymous"
+></script>
+    <script
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGUJ4osCN5Wb5_aPKacYdOCC2qKClAKjQ&callback=initMap"
+    >
+    </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="all.js"></script>
+</body>
+</html>
